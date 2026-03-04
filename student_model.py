@@ -18,8 +18,10 @@ def build_student_model(input_shape, num_classes = 10):
   model.add(Dropout(0.3))
   
   model.add(Conv2D(64, (3,3), activation='relu', padding = 'same', kernel_regularizer=regularizers.l2(0.0001)))
-
+  model.add(BatchNormalization())
   model.add(Flatten())
+  
+  model.add(Dropout(0.4))
   
   model.add(Dense(num_classes))
   model.summary()
